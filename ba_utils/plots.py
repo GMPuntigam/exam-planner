@@ -110,24 +110,6 @@ def binary_matrix_clustered(exam_matrix_binary, n_clusters):
             verticalalignment='center',
             bbox=dict(boxstyle = 'circle', facecolor='white', alpha=1),
             color = 'red')
-    
-    #custom annotations
-    #right marker
-    ax.axvline(x=sum(colsizes[:1])-0.5, ymin=1-sum(rowsizes[:3-1])/sum(rowsizes), ymax=1-sum(rowsizes[:3])/sum(rowsizes),color='orange')
-    #top marker
-    ax.axhline(y=sum(rowsizes[:3-1])-0.5, xmin=sum(colsizes[:1-1])/sum(colsizes), xmax=sum(colsizes[:1])/sum(colsizes),color='orange')
-    #bottom marker
-    ax.axhline(y=sum(rowsizes[:3])-0.5, xmin=sum(colsizes[:1-1])/sum(colsizes), xmax=sum(colsizes[:1])/sum(colsizes),color='orange')
-    #custom annotations
-    #left marker
-    ax.axvline(x=sum(colsizes[:3-1])-0.5, ymin=1-sum(rowsizes[:4-1])/sum(rowsizes), ymax=1-sum(rowsizes[:4])/sum(rowsizes),color='green')
-    #right marker
-    ax.axvline(x=sum(colsizes[:3])-0.5, ymin=1-sum(rowsizes[:4-1])/sum(rowsizes), ymax=1-sum(rowsizes[:4])/sum(rowsizes),color='green')
-    #top marker
-    ax.axhline(y=sum(rowsizes[:4-1])-0.5, xmin=sum(colsizes[:3-1])/sum(colsizes), xmax=sum(colsizes[:3])/sum(colsizes),color='green')
-    #bottom marker
-    ax.axhline(y=sum(rowsizes[:4])-0.5, xmin=sum(colsizes[:3-1])/sum(colsizes), xmax=sum(colsizes[:3])/sum(colsizes),color='green')
-    
     ax.set_ylabel('Prüfungsgruppen')
     ax.set_xlabel('Studenten')
     plt.title('Geclusterte binäre Prüfungswahlmatrix')
