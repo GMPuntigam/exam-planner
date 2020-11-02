@@ -215,7 +215,7 @@ def written_over_time(df_exam, exam_matrix_binary):
     ax1.set_ylabel('Anzahl Studenten')
     ax1.set_xticks(np.arange(1, 16, 1))
 
-def createplot(examplan, folderpath):
+def createplot(examplan, folderpath=""):
     '''
     Creates Plots for an examplan for every day.
 
@@ -247,7 +247,7 @@ def createplot(examplan, folderpath):
         roomdict[slotcombination] = roomdict[slotcombination] + 1
 
     examplan['Room_ID'] = res
-    rooms=["Room "+str(i) for i in range(max(counts))]
+    rooms=["Raum "+str(i) for i in range(max(counts))]
     slot_to_time = {0:'8',1:'10',2:'12',3:'14',4:'16', 5:'18'}
     for week in range(max(examplan['Week'].values) +1):
         weekplan = examplan[examplan['Week'] == week]
@@ -278,7 +278,7 @@ def createplot(examplan, folderpath):
             ax.set_ylim(18.1, 7.9)
             ax.set_xticks(range(1,len(rooms)+1))
             ax.set_xticklabels(rooms)
-            ax.set_ylabel('Time')
+            ax.set_ylabel('Uhrzeit')
 
             # Set Second Axis
             ax2=ax.twiny().twinx()
@@ -286,10 +286,11 @@ def createplot(examplan, folderpath):
             ax2.set_ylim(ax.get_ylim())
             ax2.set_xticks(ax.get_xticks())
             ax2.set_xticklabels(rooms)
-            ax2.set_ylabel('Time')
+            ax2.set_ylabel('Uhrzeit')
 
             plt.title('Woche ' + str(week_label) + ', Tag ' + str(day_label),y=1.07)
-            plt.savefig(folderpath +'\\' + str(week_label) + '_' + str(day_label) + '.png', dpi=200)
+            if folderpath != "":
+                plt.savefig(folderpath +'\\' + str(week_label) + '_' + str(day_label) + '.png', dpi=200)
 
 def createplot_unique(examplan):
     '''
